@@ -1,0 +1,19 @@
+{
+  "id": "/",
+  "name": "FitDraw — croquis de mesures",
+  "short_name": "FitDraw",
+  "description": "Créez des croquis de mesures de vêtements et exportez-les en PNG.",
+  "lang": "fr-FR",
+  "dir": "ltr",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "theme_color": "#3B4CCA",
+  "background_color": "#0F1118",
+  "orientation": "any",
+  "start_url": "/",
+  "scope": "/",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.625rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+html, body { overscroll-behavior: none; }
+body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; }
+
+@layer base {
+  /* Variables « thème FitDraw » — préfixées --t- pour NE PAS écraser les
+     tokens shadcn ci-dessus (format HSL « 240 5.9% 90% »), qui alimentent
+     border-border / bg-card via hsl(var(--x)). Avant préfixe, --border et
+     --card étaient écrasés au format R G B et devenaient illisibles dans
+     hsl() → bordures/fonds blancs en clair et teintes fausses en sombre. */
+  :root {
+    --t-bg: 255 255 255;
+    --t-ink: 20 22 31;
+    --t-sub: 107 112 128;
+    --t-surface: 244 245 248;
+    --t-surface2: 241 242 247;
+    --t-border: 227 229 236;
+    --t-border-strong: 213 216 226;
+    --t-canvas: 238 240 246;
+    --t-card: 255 255 255;
+  }
+  .dark {
+    --t-bg: 15 17 24;
+    --t-ink: 236 238 245;
+    --t-sub: 148 153 170;
+    --t-surface: 28 31 42;
+    --t-surface2: 33 36 48;
+    --t-border: 46 50 65;
+    --t-border-strong: 60 65 82;
+    --t-canvas: 11 13 19;
+    --t-card: 21 24 33;
+  }
+  body {
+    background-color: rgb(var(--t-bg));
+    color: rgb(var(--t-ink));
+  }
+  .t-bg { background-color: rgb(var(--t-bg)); }
+  .t-ink { color: rgb(var(--t-ink)); }
+  .t-sub { color: rgb(var(--t-sub)); }
+  .t-surface { background-color: rgb(var(--t-surface)); }
+  .t-surface2 { background-color: rgb(var(--t-surface2)); }
+  .t-card { background-color: rgb(var(--t-card)); }
+  .t-border { border-color: rgb(var(--t-border)); }
+  .t-border-strong { border-color: rgb(var(--t-border-strong)); }
+  .t-canvas { background-color: rgb(var(--t-canvas)); }
+  input.t-input { color: rgb(var(--t-ink)); }
+}
+
+/* Scrollbars natives : fines, aux couleurs du thème au lieu du gris système
+   (en dark, la scrollbar Windows restait blanche sur l'interface sombre). */
+* { scrollbar-width: thin; scrollbar-color: rgb(var(--t-border-strong)) transparent; }
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgb(var(--t-border-strong)); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgb(var(--t-sub)); }
