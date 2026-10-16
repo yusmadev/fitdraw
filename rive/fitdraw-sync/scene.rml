@@ -1,0 +1,116 @@
+<Rive version="1" kind="fragment">
+    <Artboard defaultStateMachineId="0:7" width="420" height="240" styleId="0:5" name="Sync" id="0:2">
+        <LayoutComponentStyle name="Artboard Style" id="0:5"/>
+
+        <StateMachine name="State Machine 1" id="0:7">
+            <StateMachineLayer name="Layer 1" id="0:8">
+                <AnyState x="200" y="-120"/>
+                <ExitState x="400" y="-120"/>
+                <EntryState>
+                    <StateTransition stateToId="0:12"/>
+                </EntryState>
+                <AnimationState x="200" animationId="0:6" id="0:12"/>
+            </StateMachineLayer>
+        </StateMachine>
+
+        <!-- Connector: a dashed seam between the two devices -->
+        <Shape x="210" y="120" name="Link" id="0:20">
+            <PointsPath name="Path">
+                <StraightVertex x="-56" y="0"/>
+                <StraightVertex x="56" y="0"/>
+            </PointsPath>
+            <Stroke thickness="3" name="Stroke">
+                <SolidColor colorValue="FF6E79DC" name="Color"/>
+                <DashPath name="Dashes">
+                    <Dash length="9" name="On"/>
+                    <Dash length="9" name="Off"/>
+                </DashPath>
+            </Stroke>
+        </Shape>
+
+        <!-- Phone, left -->
+        <Shape x="74" y="120" name="Phone" id="0:22">
+            <Rectangle width="86" height="152" cornerRadiusTL="22" originX="0.5" originY="0.5" name="Path"/>
+            <Stroke thickness="4" name="Stroke">
+                <SolidColor colorValue="FF6E79DC" name="Color"/>
+            </Stroke>
+        </Shape>
+
+        <!-- Laptop, right -->
+        <Shape x="344" y="112" name="Laptop" id="0:24">
+            <Rectangle width="132" height="92" cornerRadiusTL="14" originX="0.5" originY="0.5" name="Path"/>
+            <Stroke thickness="4" name="Stroke">
+                <SolidColor colorValue="FF6E79DC" name="Color"/>
+            </Stroke>
+        </Shape>
+        <Shape x="344" y="170" name="LaptopBase" id="0:26">
+            <Rectangle width="150" height="7" cornerRadiusTL="3.5" originX="0.5" originY="0.5" name="Path"/>
+            <Fill name="Fill">
+                <SolidColor colorValue="FF6E79DC" name="Color"/>
+            </Fill>
+        </Shape>
+
+        <!-- The draft travelling from one device to the other -->
+        <Node x="74" y="120" name="Draft" id="0:30">
+            <Shape name="Card" id="0:32">
+                <Rectangle width="30" height="30" cornerRadiusTL="9" originX="0.5" originY="0.5" name="Path"/>
+                <Fill name="Fill">
+                    <SolidColor colorValue="FF3B4CCA" name="Color"/>
+                </Fill>
+            </Shape>
+        </Node>
+
+        <LinearAnimation loopValue="1" duration="150" name="Sync" id="0:6">
+            <!-- travel: phone -> laptop -> phone -->
+            <KeyedObject objectId="0:30">
+                <KeyedProperty propertyKey="13">
+                    <KeyFrameDouble value="74" interpolationType="1"/>
+                    <KeyFrameDouble value="344" interpolationType="1" frame="60"/>
+                    <KeyFrameDouble value="344" interpolationType="1" frame="75"/>
+                    <KeyFrameDouble value="74" interpolationType="1" frame="135"/>
+                    <KeyFrameDouble value="74" interpolationType="1" frame="150"/>
+                </KeyedProperty>
+                <KeyedProperty propertyKey="14">
+                    <KeyFrameDouble value="120" interpolationType="1"/>
+                    <KeyFrameDouble value="92" interpolationType="1" frame="30"/>
+                    <KeyFrameDouble value="120" interpolationType="1" frame="60"/>
+                    <KeyFrameDouble value="120" interpolationType="1" frame="75"/>
+                    <KeyFrameDouble value="92" interpolationType="1" frame="105"/>
+                    <KeyFrameDouble value="120" interpolationType="1" frame="135"/>
+                    <KeyFrameDouble value="120" interpolationType="1" frame="150"/>
+                </KeyedProperty>
+                <KeyedProperty propertyKey="16">
+                    <KeyFrameDouble value="0.82" interpolationType="1"/>
+                    <KeyFrameDouble value="1" interpolationType="1" frame="30"/>
+                    <KeyFrameDouble value="1" interpolationType="1" frame="60"/>
+                    <KeyFrameDouble value="0.82" interpolationType="1" frame="75"/>
+                    <KeyFrameDouble value="1" interpolationType="1" frame="105"/>
+                    <KeyFrameDouble value="1" interpolationType="1" frame="135"/>
+                    <KeyFrameDouble value="0.82" interpolationType="1" frame="150"/>
+                </KeyedProperty>
+                <KeyedProperty propertyKey="17">
+                    <KeyFrameDouble value="0.82" interpolationType="1"/>
+                    <KeyFrameDouble value="1" interpolationType="1" frame="30"/>
+                    <KeyFrameDouble value="1" interpolationType="1" frame="60"/>
+                    <KeyFrameDouble value="0.82" interpolationType="1" frame="75"/>
+                    <KeyFrameDouble value="1" interpolationType="1" frame="105"/>
+                    <KeyFrameDouble value="1" interpolationType="1" frame="135"/>
+                    <KeyFrameDouble value="0.82" interpolationType="1" frame="150"/>
+                </KeyedProperty>
+            </KeyedObject>
+
+            <!-- the seam breathes while the draft is in flight -->
+            <KeyedObject objectId="0:20">
+                <KeyedProperty propertyKey="18">
+                    <KeyFrameDouble value="0.25" interpolationType="1"/>
+                    <KeyFrameDouble value="0.75" interpolationType="1" frame="30"/>
+                    <KeyFrameDouble value="0.25" interpolationType="1" frame="60"/>
+                    <KeyFrameDouble value="0.25" interpolationType="1" frame="75"/>
+                    <KeyFrameDouble value="0.75" interpolationType="1" frame="105"/>
+                    <KeyFrameDouble value="0.25" interpolationType="1" frame="135"/>
+                    <KeyFrameDouble value="0.25" interpolationType="1" frame="150"/>
+                </KeyedProperty>
+            </KeyedObject>
+        </LinearAnimation>
+    </Artboard>
+</Rive>

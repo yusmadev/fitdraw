@@ -1,36 +1,19 @@
-# FitDraw
+# App template
 
-FitDraw permet de créer des croquis de mesures de vêtements, puis de les copier, partager ou exporter en PNG 1600 × 1600. Les mesures, préférences et personnalisations sont enregistrées dans le stockage local du navigateur : aucun compte, OAuth ou serveur de données n’est utilisé.
+Runable copies this Bun and Turborepo project into each new sandbox.
 
-## Démarrer en local
+The root package commands are the external contract:
 
-Prérequis : Node.js 20 ou supérieur et npm.
+- `bun run dev` starts the web app.
+- `bun run dev:desktop` and `bun run dev:mobile` start platform clients.
+- `bun run build` builds every package.
+- `bun run start` starts or restarts the production server.
+- `bun run stop` stops the production server.
+- `bun run lint` and `bun run typecheck` validate the project.
+- The `db:generate`, `db:migrate`, and `db:push` commands manage the database.
 
-```sh
-npm ci
-npm run dev
-```
+Deployment tools depend on these command names. Their implementations may change, but the names must remain stable.
 
-Vite sert l’application à <http://localhost:3000>.
+The web package owns the API, database, and shared web interface. The mobile package is an Expo client. The desktop package is an Electron shell around the web app. Services use the fixed ports defined in `__ports.cjs`, and the web health endpoint is `/api/health`.
 
-## Vérifications et build
-
-```sh
-npm run check
-npm run lint
-npm test
-npm run build
-npm run preview
-```
-
-`npm run build` génère le site statique dans `dist/public`. `npm run preview` sert le résultat de production à <http://localhost:4173>.
-
-## Publication
-
-Publiez le **contenu de `dist/public/`** sur un hébergeur statique (par exemple Cloudflare Pages, Netlify, Vercel Static ou GitHub Pages) avec la commande de build `npm ci && npm run build` et le répertoire de sortie `dist/public`.
-
-Les routes inconnues doivent retomber sur `/index.html` (fallback SPA). Pour Cloudflare Pages, la présence de `public/_redirects` configure ce fallback. La PWA est activée en HTTPS ou localhost ; le Service Worker n’est pas disponible depuis une origine HTTP non sécurisée.
-
-## Données locales
-
-Les brouillons par vêtement, l’unité, le thème, le vêtement récent, l’historique d’utilisation et le nom/logo de boutique restent dans le navigateur courant. Ils ne sont ni synchronisés entre appareils ni téléversés. Le logo personnalisé accepte PNG, JPG ou WebP jusqu’à 1 Mo et est redimensionné dans le navigateur.
+Secrets belong in the root `.env` file. Browser values must use the `VITE_` prefix. Commands prefixed with `internal:` are for template maintenance.
