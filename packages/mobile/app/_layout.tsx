@@ -8,6 +8,7 @@ import { ActivityIndicator, StyleSheet, View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useFonts } from "expo-font";
+import { Ionicons } from "@expo/vector-icons";
 import {
   PlusJakartaSans_500Medium,
   PlusJakartaSans_600SemiBold,
@@ -53,6 +54,10 @@ export default function RootLayout() {
     PlusJakartaSans_600SemiBold,
     PlusJakartaSans_700Bold,
     PlusJakartaSans_800ExtraBold,
+    // Précharge la police des icônes. Sans elle, Android ne trouve pas la
+    // famille "ionicons" au premier rendu et applique sa police de repli :
+    // les glyphes sortent alors en caractères chinois.
+    ...Ionicons.font,
   });
 
   useEffect(() => {
